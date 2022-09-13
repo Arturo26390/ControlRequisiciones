@@ -1,0 +1,90 @@
+#principal{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    height: 1010px; 
+    width: 680px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.tabla_1{
+    width: 100%;
+    background: #DCDCDC;
+}
+
+.tabla_1 td{
+    font-family:verdana;
+    font-size:12px;
+}
+
+.tabla_2{
+    width: 100%;
+}
+
+.tabla_2 td{
+    font-family:verdana;
+    font-size:10px;
+}
+#titulo{
+    font-size:20px;
+}
+
+.tabla_3{
+    width: 90%;
+    font-family:verdana;
+    font-size:9px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tabla_3 td{
+    background: #DCDCDC;
+    font-family:verdana;
+    font-size:10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tabla_3 th{
+    font-family:verdana;
+    font-size:8px;
+    font-weight: lighter;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#tr1{
+    padding: 50px 0px;
+}
+
+.id1{
+    border-bottom: 2px solid black;
+}
+
+.th1{
+    background: #DCDCDC;
+}
+
+.th2{
+    padding: 8px 0px;
+}
+
+#suggestions {
+    box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+    height: auto;
+    position: absolute;
+    top: 45px;
+    z-index: 9999;
+    width: 206px;
+}
+ 
+#suggestions .suggest-element {
+    background-color: #EEEEEE;
+    border-top: 1px solid #d6d4d4;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    float: left;
+}
