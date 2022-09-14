@@ -85,6 +85,7 @@ function modifica_cantidad(indice,cantidad_producto,clave_producto,clave_requisi
 	})
 		.done(function(data) {
 			//$("#resultado").html(data);
+			console.log(data);
 		})
 		.fail(function(data) {
 			alert( "error" );
