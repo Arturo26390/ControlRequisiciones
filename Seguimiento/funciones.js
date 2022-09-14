@@ -88,3 +88,30 @@ function modifica_cantidad(indice,cantidad_producto,clave_producto,clave_requisi
 			
 		});
 }
+
+function carga(){
+	$.ajax(
+	{
+		url : 'php/proceso.php',
+		type: "POST",
+		data : {
+				opcion : 2
+			}
+	})
+		.done(function(data) {
+			//$("#resultado").html(data);
+			if(data == 1){
+				$("#cargando").html('<img src="../asset/imgs/login/login_mes_actual.gif" alt="">');
+				setTimeout(function(){
+					$("#cargando").html('Procesado Correctamente!');
+				}, 2000);
+			}
+			console.log(data);
+		})
+		.fail(function(data) {
+			alert( "error" );
+		})
+		.always(function(data) {
+			
+		});
+}

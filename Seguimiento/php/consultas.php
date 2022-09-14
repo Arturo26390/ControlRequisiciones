@@ -149,8 +149,15 @@ if($opcion == 2){
             $var1++;
             }
             ?>
-            
         </table>
+        <br><br>
+        <div>
+            <button class="form__submit" type="button" id="procesar" onclick="carga()">Procesar</button>
+        </div>
+        <br>
+        <div class="contenedor-descarga"  id="cargando">
+           
+        </div>
        <?php
 
 }

@@ -25,4 +25,8 @@ if($opcion == 1){
 
 }
 
+if($opcion == 2){
+    echo '1';
+}
+
 ?>
