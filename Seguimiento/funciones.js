@@ -52,6 +52,8 @@ function checks_respuestas(respuesta){
 		$("#columna_extra1_"+vector_resp[1]).show();
 	}else{
 		document.getElementById("si_"+vector_resp[1]).checked = false;
+		$("#encabezado_extra1").hide();
+		$("#columna_extra1_"+vector_resp[1]).hide();
 	}
 }
 
