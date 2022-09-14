@@ -16,8 +16,11 @@ if($opcion == 1){
 
     $cantidad_resultado = $cantidad_producto - $cantidad_entregada;
 
+    if($cantidad_resultado == 0){
+        $update_general = "UPDATE CREQ_REQUISICIONES_GENERAL SET FECHA_CIERRE = '".$fecha." ".$hora."', USUARIO_CIERRE = '".$usuario."' WHERE CLAVE_REQUISICION = '".$requisicion."'";
+        $ejecuta_update_general = mysqli_query($con, $update_general);
+    }
     $update = "UPDATE CREQ_REQUISICIONES_DETALLE SET CANTIDAD_FALTANTE=".$cantidad_resultado." WHERE CLAVE_REQUISICION = '".$requisicion."' AND CLAVE_PRODUCTO = ".$producto;
-    echo $update;
     $ejecuta_update = mysqli_query($con, $update);
 
     $insert_bitacora = "INSERT INTO CREQ_BITACORA_ENTREGAS (CLAVE_REQUISICION,CLAVE_PRODUCTO,CANTIDAD_ENTREGADA,FECHA_ENTREGA) VALUES ('".$requisicion."','".$producto."',".$cantidad_entregada.",'".$fecha." ".$hora."')";

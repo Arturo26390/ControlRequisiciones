@@ -48,7 +48,7 @@
     <?php
     include("../Includes/connection.php");
     ?>
-    <title>Catalogo de Productos</title>
+    <title>Consulta Requisiciones</title>
 </head>
 <body>
 <body class="body-bg">
@@ -62,15 +62,18 @@
                 <table width="90%" border="0" cellspacing="3" cellpadding="0" class="tabla-mes">
                     <tr>
                         <th class="tabla-mes__head">Clave</th>
+                        <th class="tabla-mes__head">PDF</th>
                         <th class="tabla-mes__head">Fecha Captura</th>
                         <th class="tabla-mes__head">Usuario Captura</th>
+                        <th class="tabla-mes__head">Fecha Cierre</th>
+                        <th class="tabla-mes__head">Usuario Cierre</th>
                         <th class="tabla-mes__head">Patente</th>
                         <th class="tabla-mes__head">Prioridad</th>
                         <th class="tabla-mes__head">Departamento</th>
                     </tr>
                     <?php
                     include("class.pagina.php");
-                    $sql = "SELECT CLAVE_REQUISICION,FECHA_CAPTURA,USUARIO_CAPTURA,PATENTE,PRIORIDAD,DEPARTAMENTO FROM CREQ_REQUISICIONES_GENERAL";
+                    $sql = "SELECT CLAVE_REQUISICION,FECHA_CAPTURA,USUARIO_CAPTURA,FECHA_CIERRE,USUARIO_CIERRE,PATENTE,PRIORIDAD,DEPARTAMENTO FROM CREQ_REQUISICIONES_GENERAL";
                     $PAGINADOR=new PAGINADOR($sql,$con);
                     
                     $sql=$PAGINADOR->sql;
@@ -83,18 +86,30 @@
                         $ejecuta_consulta_usuarios =  mysqli_query($con, $consulta_usuarios);
                         $fila_usuarios = mysqli_fetch_array($ejecuta_consulta_usuarios);
                         $nombre_usuario = $fila_usuarios["NOMBRE"];
-        
-                        $consulta_areas = "SELECT * FROM CREQ_DEPARTAMENTOS WHERE ID = '".$row[5]."'";
+
+                        if($row[4] != ''){
+                            $consulta_usuarios2 = "SELECT * FROM CREQ_USUARIOS WHERE CLAVE = '".$row[4]."'";
+                            $ejecuta_consulta_usuarios2 =  mysqli_query($con, $consulta_usuarios2);
+                            $fila_usuarios2 = mysqli_fetch_array($ejecuta_consulta_usuarios2);
+                            $nombre_usuario2 = $fila_usuarios2["NOMBRE"];
+                        }else{
+                            $nombre_usuario2 = "";
+                        }
+
+                        $consulta_areas = "SELECT * FROM CREQ_DEPARTAMENTOS WHERE ID = '".$row[7]."'";
                         $ejecuta_consulta_areas =  mysqli_query($con, $consulta_areas);
                         $fila_areas = mysqli_fetch_array($ejecuta_consulta_areas);
                         $nombre_departamento = $fila_areas["NOMBRE"];
                     ?>
                     <tr>
-                        <td class="tabla-mes"><a href="../Requisiciones-PDF/<?php echo $row[0]; ?>.pdf" target="_blank"><?php echo $row[0]?></a></td>
+                        <td class="tabla-mes"><a href="." target="_blank"><?php echo $row[0]?></a></td>
+                        <td class="tabla-mes"><a href="../Requisiciones-PDF/<?php echo $row[0]; ?>.pdf" target="_blank"><img src="pdf.png" width="20px" alt=""></a></td>
                         <td class="tabla-mes"><?php echo $row[1]?></td>
                         <td class="tabla-mes"><?php echo $nombre_usuario?></td>
                         <td class="tabla-mes"><?php echo $row[3]?></td>
-                        <td class="tabla-mes"><?php echo $row[4]?></td>
+                        <td class="tabla-mes"><?php echo $nombre_usuario2?></td>
+                        <td class="tabla-mes"><?php echo $row[5]?></td>
+                        <td class="tabla-mes"><?php echo $row[6]?></td>
                         <td class="tabla-mes"><?php echo  $nombre_departamento?></td>
                     </tr>
                     <?php
