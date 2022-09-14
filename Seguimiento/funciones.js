@@ -50,23 +50,17 @@ function checks_respuestas(respuesta){
 		document.getElementById("no_"+vector_resp[1]).checked = false;
 		$("#encabezado_extra1").show();
 		$("#columna_extra1_"+vector_resp[1]).show();
+		$("#encabezado_extra2").show();
+		$("#columna_extra2_"+vector_resp[1]).show();
 	}else{
 		document.getElementById("si_"+vector_resp[1]).checked = false;
 		$("#encabezado_extra1").hide();
 		$("#columna_extra1_"+vector_resp[1]).hide();
+		$("#encabezado_extra2").hide();
+		$("#columna_extra2_"+vector_resp[1]).hide();
 	}
 }
 
-function checks_respuestas_2(respuesta){
-	var vector_resp = respuesta.split("_");
-	if(vector_resp[1] == "si"){
-		document.getElementById("completo_no_"+vector_resp[2]).checked = false;
-	}else{
-		document.getElementById("completo_si_"+vector_resp[2]).checked = false;
-		$("#encabezado_extra2").show();
-		$("#columna_extra2_"+vector_resp[2]).show();
-	}
-}
 
 function modifica_cantidad(indice,cantidad_producto,clave_producto,clave_requisicion){
 	var cantidad_entregada = $("#cantidad_entregada_"+indice).val();

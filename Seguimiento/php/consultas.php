@@ -81,8 +81,8 @@ if($opcion == 2){
                 <th class="tabla-mes__head">PRODUCTO</th>
                 <th class="tabla-mes__head">CANTIDAD</th>
                 <th class="tabla-mes__head">OBSERVACIONES</th>
-                <th class="tabla-mes__head">RECIBIDO</th>
-                <th class="tabla-mes__head oculto" id="encabezado_extra1">CANTIDAD COMPLETA</th>
+                <th class="tabla-mes__head">RECIBIR</th>
+                <th class="tabla-mes__head oculto" id="encabezado_extra1">PENDIENTES</th>
                 <th class="tabla-mes__head oculto" id="encabezado_extra2">CANTIDAD ENTREGADA</th>
             </tr>
             <?php 
@@ -93,8 +93,10 @@ if($opcion == 2){
             while($fila_detalle = mysqli_fetch_array($ejecuta_consulta_requisiciones_detalle)){
                 $clave_producto =  $fila_detalle['CLAVE_PRODUCTO'];
                 $cantidad_producto =  $fila_detalle['CANTIDAD_PRODUCTO'];
+                $cantidad_faltante =  $fila_detalle['CANTIDAD_FALTANTE'];
                 $observaciones =  $fila_detalle['OBSERVACIONES'];
-                $clave_requisicion_2 =  $fila_detalle['CLAVE_REQUISICION'];     
+                $clave_requisicion_2 =  $fila_detalle['CLAVE_REQUISICION'];  
+
                 $select_producto = "SELECT * FROM CREQ_PRODUCTOS WHERE ID = '".$clave_producto."'";
                 $ejecuta_consulta_producto = mysqli_query($con, $select_producto);
                 $fila_producto = mysqli_fetch_array($ejecuta_consulta_producto);
@@ -104,8 +106,16 @@ if($opcion == 2){
                     <th class="tabla-mes"><?php echo $nombre_producto; ?></th> 
                     <th class="tabla-mes"><?php echo $cantidad_producto; ?></th>
                     <th class="tabla-mes"><?php echo $observaciones; ?></th>
+                    
                     <th class="table-mes">
-                        <table>
+                        <?php
+                        if($cantidad_faltante == 0){
+                            ?>
+                                Completado!
+                            <?php
+                        }else{
+                            ?>
+                             <table>
                             <tr>
                                 <th class="table-mes">
                                     <div class="contenedor-checkbox">
@@ -122,29 +132,16 @@ if($opcion == 2){
                                 <th></th>
                             </tr>
                         </table>
+                            <?php
+                        }
+
+                        ?>
+                       
                     </th>
-                    <th class="table-mes oculto" id="columna_extra1_<?php echo $var1?>">
-                        <table >
-                            <tr>
-                                <th class="table-mes">
-                                    <div class="contenedor-checkbox">
-                                        <input type="checkbox" class="form-checkbox" name="" id="completo_si_<?php echo $var1?>" onclick="checks_respuestas_2('completo_si_<?php echo $var1?>');">
-                                        <span>SI</span>
-                                    </div>
-                                </th>
-                                <th class="table-mes">
-                                    <div class="contenedor-checkbox">
-                                        <input type="checkbox" class="form-checkbox" name="" id="completo_no_<?php echo $var1?>" onclick="checks_respuestas_2('completo_no_<?php echo $var1?>');">
-                                        <span>NO</span>
-                                    </div>
-                                </th>
-                                <th></th>
-                            </tr>
-                        </table>
-                    </th>
-                    <th class="table-mes oculto" id="columna_extra2_<?php echo $var1?>"">
-                        <div>
-                            <input type="text" placeholder="Ingrese información" class="form__text-validador" style="width: 200px;" id="cantidad_entregada_<?php echo $var1?>" onchange="modifica_cantidad('<?php echo $var1?>','<?php echo $cantidad_producto?>','<?php echo $clave_producto?>','<?php echo $clave_requisicion_2?>')">
+                    <th class="table-mes oculto" id="columna_extra1_<?php echo $var1?>"><input type="text" value="<?php echo $cantidad_faltante?>" class="form__text-validador" style="width: 200px;" disabled></th>
+                    <th class="table-mes oculto" id="columna_extra2_<?php echo $var1?>">
+                    <div>
+                            <input type="text" placeholder="Ingrese información" class="form__text-validador" style="width: 200px;" id="cantidad_entregada_<?php echo $var1?>" onchange="modifica_cantidad('<?php echo $var1?>','<?php echo $cantidad_faltante?>','<?php echo $clave_producto?>','<?php echo $clave_requisicion_2?>')">
                         </div>
                     </th>
                 </tr>
