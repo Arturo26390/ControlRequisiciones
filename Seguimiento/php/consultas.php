@@ -94,6 +94,7 @@ if($opcion == 2){
                 $clave_producto =  $fila_detalle['CLAVE_PRODUCTO'];
                 $cantidad_producto =  $fila_detalle['CANTIDAD_PRODUCTO'];
                 $observaciones =  $fila_detalle['OBSERVACIONES'];
+                $clave_requisicion_2 =  $fila_detalle['CLAVE_REQUISICION'];     
                 $select_producto = "SELECT * FROM CREQ_PRODUCTOS WHERE ID = '".$clave_producto."'";
                 $ejecuta_consulta_producto = mysqli_query($con, $select_producto);
                 $fila_producto = mysqli_fetch_array($ejecuta_consulta_producto);
@@ -143,7 +144,7 @@ if($opcion == 2){
                     </th>
                     <th class="table-mes oculto" id="columna_extra2_<?php echo $var1?>"">
                         <div>
-                            <input type="text" placeholder="Ingrese información" class="form__text-validador" style="width: 200px;" id="cantidad_entregada_<?php echo $var1?>">
+                            <input type="text" placeholder="Ingrese información" class="form__text-validador" style="width: 200px;" id="cantidad_entregada_<?php echo $var1?>" onchange="modifica_cantidad('<?php echo $var1?>','<?php echo $cantidad_producto?>','<?php echo $clave_producto?>','<?php echo $clave_requisicion_2?>')">
                         </div>
                     </th>
                 </tr>

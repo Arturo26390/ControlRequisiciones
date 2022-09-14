@@ -67,3 +67,9 @@ function checks_respuestas_2(respuesta){
 		$("#columna_extra2_"+vector_resp[2]).show();
 	}
 }
+
+function modifica_cantidad(indice,cantidad_producto,clave_producto,clave_requisicion){
+	var cantidad_entregada = $("#cantidad_entregada_"+indice).val();
+	//alert("Se resta "+cantidad_entregada+" a "+cantidad_producto+" del producto "+clave_producto+" de la requisicion "+clave_requisicion);
+	
+}

@@ -71,7 +71,7 @@ if($opcion == 2){
       $precio_unitario_producto = $vector_precio_unitario[$i];
       $total_producto = $total_producto + $vector_total[$i];
 
-      $insert_detalle = "INSERT INTO CREQ_REQUISICIONES_DETALLE (CLAVE_REQUISICION, CLAVE_PRODUCTO, CANTIDAD_PRODUCTO, OBSERVACIONES) VALUES ('".$clave_requisicion."','".$clave_producto."','".$cantidad_prodcuto."','".$observaciones_producto."')";
+      $insert_detalle = "INSERT INTO CREQ_REQUISICIONES_DETALLE (CLAVE_REQUISICION, CLAVE_PRODUCTO, CANTIDAD_PRODUCTO, OBSERVACIONES, CANTIDAD_FALTANTE) VALUES ('".$clave_requisicion."','".$clave_producto."','".$cantidad_prodcuto."','".$observaciones_producto."','".$cantidad_prodcuto."')";
       //echo $insert_detalle."<br>";
       mysqli_query($con, $insert_detalle);
 
