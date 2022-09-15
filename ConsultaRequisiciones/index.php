@@ -102,7 +102,7 @@
                         $nombre_departamento = $fila_areas["NOMBRE"];
                     ?>
                     <tr>
-                        <td class="tabla-mes"><a href="seguimiento.php" target="_blank"><?php echo $row[0]?></a></td>
+                        <td class="tabla-mes"><a href="seguimiento.php?requisicion=<?php echo $row[0];?>" target="_blank"><?php echo $row[0]?></a></td>
                         <td class="tabla-mes"><a href="../Requisiciones-PDF/<?php echo $row[0]; ?>.pdf" target="_blank"><img src="pdf.png" width="20px" alt=""></a></td>
                         <td class="tabla-mes"><?php echo $row[1]?></td>
                         <td class="tabla-mes"><?php echo $nombre_usuario?></td>
