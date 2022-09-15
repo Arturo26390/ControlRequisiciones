@@ -43,7 +43,7 @@
 		<div class="border"></div>
         <div id="resultado" class="contenedor-descarga">
             <br> 
-            <h3 class="form-h3__tabla">DETALLE REQUISICIONES CAPTURADAS:</h3>
+            <h3 class="form-h3__tabla">DETALLE REQUISICION: <?php echo $requisicion; ?></h3>
             <br>
                 <div>
                     <span> Departamento: &nbsp;</span>
