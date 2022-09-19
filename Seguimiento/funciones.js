@@ -1,5 +1,5 @@
 function consultaRequis(){
-	
+	$("#resultado").hide();
 	var fecha = $("#fecha_requi").val();
 
 	$.ajax(
@@ -23,7 +23,7 @@ function consultaRequis(){
 }
 
 function muestraDetalle(requisicion){
-	
+	$("#resultado").show();
 	$.ajax(
 	{
 		url : 'php/consultas.php',
