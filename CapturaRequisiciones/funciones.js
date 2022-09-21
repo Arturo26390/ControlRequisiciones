@@ -30,7 +30,7 @@ function autoCompletar(id,id2){
 			minLength: 2,
 		});
 	}
-	$("#"+id2).attr("disabled", true);
+	//$("#"+id2).attr("disabled", true);
 }
 
 // function autoCompletar(id){
@@ -255,7 +255,7 @@ function Procesar(){
 	})
 		.done(function(data) {
 			generaPDF(data);
-			//console.log(data);
+			console.log(data);
 		})
 		.fail(function(data) {
 			alert( "error" );

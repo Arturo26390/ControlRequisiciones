@@ -100,13 +100,19 @@
                         $ejecuta_consulta_areas =  mysqli_query($con, $consulta_areas);
                         $fila_areas = mysqli_fetch_array($ejecuta_consulta_areas);
                         $nombre_departamento = $fila_areas["NOMBRE"];
+
+                         if($row[3] == '0000-00-00 00:00:00'){
+                            $fecha_cierre = "";
+                         }else{
+                            $fecha_cierre = $row[3];
+                         }
                     ?>
                     <tr>
                         <td class="tabla-mes"><a href="seguimiento.php?requisicion=<?php echo $row[0];?>" target="_blank"><?php echo $row[0]?></a></td>
                         <td class="tabla-mes"><a href="../Requisiciones-PDF/<?php echo $row[0]; ?>.pdf" target="_blank"><img src="pdf.png" width="20px" alt=""></a></td>
                         <td class="tabla-mes"><?php echo $row[1]?></td>
                         <td class="tabla-mes"><?php echo $nombre_usuario?></td>
-                        <td class="tabla-mes"><?php echo $row[3]?></td>
+                        <td class="tabla-mes"><?php echo $fecha_cierre; ?></td>
                         <td class="tabla-mes"><?php echo $nombre_usuario2?></td>
                         <td class="tabla-mes"><?php echo $row[5]?></td>
                         <td class="tabla-mes"><?php echo $row[6]?></td>

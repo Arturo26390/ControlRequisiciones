@@ -52,6 +52,13 @@ if($opcion == 2){
    $datosArea = mysqli_fetch_array($ejecuta_consulta_area);
    $clave_area = $datosArea["CLAVE"];
    
+   $consulta_requisiciones_general = "SELECT * FROM CREQ_REQUISICIONES_GENERAL";
+   $ejecuta_consulta_requisiciones_general = mysqli_query($con, $consulta_requisiciones_general);
+   $id_siguiente = mysqli_num_rows($ejecuta_consulta_requisiciones_general) + 1;
+
+   $auto_increment = "ALTER TABLE CREQ_REQUISICIONES_GENERAL AUTO_INCREMENT = ".$id_siguiente;
+   $ejecuta_auto_increment = mysqli_query($con, $auto_increment);
+
 
    $consulta_requi = "SELECT * FROM `CREQ_REQUISICIONES_GENERAL` WHERE SUBSTR(FECHA_CAPTURA,1,10) = '".$fecha."' AND DEPARTAMENTO = '".$area."';";
    //echo $consulta_requi;
@@ -70,6 +77,14 @@ if($opcion == 2){
       $observaciones_producto = $vector_observaciones[$i];
       $precio_unitario_producto = $vector_precio_unitario[$i];
       $total_producto = $total_producto + $vector_total[$i];
+
+      $consulta_requisiciones_detalle= "SELECT * FROM CREQ_REQUISICIONES_DETALLE";
+      $ejecuta_consulta_requisiciones_detalle = mysqli_query($con, $consulta_requisiciones_detalle);
+      $id_siguiente = mysqli_num_rows($ejecuta_consulta_requisiciones_detalle) + 1;
+   
+      $auto_increment = "ALTER TABLE CREQ_REQUISICIONES_DETALLE AUTO_INCREMENT = ".$id_siguiente;
+      $ejecuta_auto_increment = mysqli_query($con, $auto_increment);
+   
 
       $insert_detalle = "INSERT INTO CREQ_REQUISICIONES_DETALLE (CLAVE_REQUISICION, CLAVE_PRODUCTO, CANTIDAD_PRODUCTO, OBSERVACIONES, CANTIDAD_FALTANTE) VALUES ('".$clave_requisicion."','".$clave_producto."','".$cantidad_prodcuto."','".$observaciones_producto."','".$cantidad_prodcuto."')";
       //echo $insert_detalle."<br>";
@@ -119,7 +134,7 @@ if($opcion == 3){
       $clave_requisicion = $vector_fecha[0].$vector_fecha[1].$vector_fecha[2].$clave_area."-1";
    }
 
-   echo $clave_requisicion;
+   //echo $clave_requisicion;
 
 }
 

@@ -118,6 +118,7 @@ $html = '
                 $observaciones_producto = $fila_detalle['OBSERVACIONES'];
 
                 $consulta_producto = "SELECT * FROM CREQ_PRODUCTOS WHERE ID='".$id_producto."'";
+                //echo $consulta_producto;
                 $ejecuta_consulta_producto = mysqli_query($con, $consulta_producto);
                 $fila_producto = mysqli_fetch_array($ejecuta_consulta_producto);
                 $nombre_producto = $fila_producto['NOMBRE'];
