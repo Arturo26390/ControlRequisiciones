@@ -26,6 +26,17 @@ if($opcion == 1){
     $insert_bitacora = "INSERT INTO CREQ_BITACORA_ENTREGAS (CLAVE_REQUISICION,CLAVE_PRODUCTO,CANTIDAD_ENTREGADA,FECHA_ENTREGA) VALUES ('".$requisicion."','".$producto."',".$cantidad_entregada.",'".$fecha." ".$hora."')";
     $ejecuta_insert_bitacora = mysqli_query($con, $insert_bitacora);
 
+
+    /////////////////////////////////////// ENVIO DE CORREO A IDT ENTREGA DE PRODUCTOS //////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 
 if($opcion == 2){
