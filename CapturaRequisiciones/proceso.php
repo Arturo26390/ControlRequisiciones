@@ -93,7 +93,7 @@ if($opcion == 2){
 
    }
    
-   $insert_general = "INSERT INTO CREQ_REQUISICIONES_GENERAL (CLAVE_REQUISICION, FECHA_CAPTURA, FECHA_CIERRE, USUARIO_CAPTURA, USUARIO_CIERRE, PRIORIDAD, PATENTE, DEPARTAMENTO, COSTO_TOTAL, COMENTARIOS_ADICIONALES) VALUES ('".$clave_requisicion."','".$fecha." ".$hora."','','".$usuario."','','".$prioridad."','".$patente."','".$area."','".$total_producto."','".$comentarios."')";
+   $insert_general = "INSERT INTO CREQ_REQUISICIONES_GENERAL (CLAVE_REQUISICION, FECHA_CAPTURA, FECHA_CIERRE, USUARIO_CAPTURA, USUARIO_CIERRE, PRIORIDAD, PATENTE, DEPARTAMENTO, COSTO_TOTAL, COMENTARIOS_ADICIONALES, ESTATUS) VALUES ('".$clave_requisicion."','".$fecha." ".$hora."','','".$usuario."','','".$prioridad."','".$patente."','".$area."','".$total_producto."','".$comentarios."','ENVIADA')";
    //echo $insert_general;
    mysqli_query($con, $insert_general);
 
@@ -167,7 +167,7 @@ if($opcion == 5){
 	$mail->Port = 465;
 	$mail->SMTPSecure = 'ssl';
 	$mail->Username   = 'sistemas.puebla@cae3076.com';
-	$mail->Password   = "";
+	$mail->Password   = "Bcqae610!";
 	/*-------------------------------------------------------------------------------------------------------------------------------*/
 	//====== DE QUIEN ES ========
 	$mail->From       = "sistemas.puebla@cae3076.com";
