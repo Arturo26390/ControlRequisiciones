@@ -1,5 +1,6 @@
 <?php
 include("../Includes/connection.php");
+require("../Includes/php/PHPMailer_5.2.4/class.phpmailer.php");
 
 $FechaHora = mysqli_query($con, "SELECT CURDATE() AS FECHA, CURTIME() AS HORA");
 $datosFechaHora = mysqli_fetch_array($FechaHora);
@@ -139,7 +140,7 @@ if($opcion == 3){
 }
 
 if($opcion == 4){
-
+   
    $consulta = "SELECT * FROM CREQ_PRODUCTOS";
 	$resultado = mysqli_query($con, $consulta);
    //if(mysqli_num_rows($resultado)==0){
@@ -152,6 +153,49 @@ if($opcion == 4){
    //echo mysqli_num_rows($resultado)."+".$numero;
    echo $id_nuevo;
 
+}
+
+if($opcion == 5){
+
+   $clave_requisicion = $_POST["clave_requisicion"];
+   /// CREACION DEL CORREO
+	/*-------------------------------------------------------------------------------------------------------------------------------*/
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->Host = "smtp.gmail.com";
+	$mail->SMTPAuth = true;
+	$mail->Port = 465;
+	$mail->SMTPSecure = 'ssl';
+	$mail->Username   = 'sistemas.puebla@cae3076.com';
+	$mail->Password   = "Bcqae610!";
+	/*-------------------------------------------------------------------------------------------------------------------------------*/
+	//====== DE QUIEN ES ========
+	$mail->From       = "sistemas.puebla@cae3076.com";
+	$mail->FromName   = "Sistemas Puebla";
+	//====== PARA QUIEN =========
+	/*-------------------------------------------------------------------------------------------------------------------------------*/
+	$mail->Subject    = "Requisicion de Compra";
+	$texto = "Corporativo Aduanal Especializado Informa:
+						<br><br>
+						Se ha realizado el envio de la siguiente requisicion de compra: ".$clave_requisicion;
+	
+	
+	$mail->MsgHTML($texto);
+	$mail->AddAddress("mnavarrete@cae3076.com");
+
+	$exito = $mail->Send();
+	/*-------------------------------------------------------------------------------------------------------------------------------*/
+	//Si el mensaje no ha podido ser enviado se realizaran 4 intentos mas como mucho 
+	//para intentar enviar el mensaje, cada intento se hara 5 segundos despues 
+	//del anterior, para ello se usa la funcion sleep
+	/*-------------------------------------------------------------------------------------------------------------------------------*/	
+	$intentos=1; 
+	while ((!$exito) && ($intentos < 5)) {
+	sleep(2);
+		//echo $mail->ErrorInfo;
+		$exito = $mail->Send();
+		$intentos=$intentos+1;	
+	}
 }
 
 ?>

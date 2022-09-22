@@ -277,6 +277,28 @@ function generaPDF(clave_requisicion){
 	})
 		.done(function(data) {
 			$("#resultadoPDF").html(data);
+			envioMail(clave_requisicion);
+		})
+		.fail(function(data) {
+			alert( "error" );
+		})
+		.always(function(data) {
+			
+		});
+}
+
+function envioMail(){
+	$.ajax(
+	{
+		url : 'proceso.php',
+		type: "POST",
+		data : {
+			opcion : 5,
+			clave_requisicion : clave_requisicion
+				}
+	})
+		.done(function(data) {
+			
 		})
 		.fail(function(data) {
 			alert( "error" );
