@@ -287,7 +287,7 @@ function generaPDF(clave_requisicion){
 		});
 }
 
-function envioMail(){
+function envioMail(clave_requisicion){
 	$.ajax(
 	{
 		url : 'proceso.php',
@@ -298,7 +298,8 @@ function envioMail(){
 				}
 	})
 		.done(function(data) {
-			
+			$("#muestra_mensaje").html(data);
+			console.log(data);
 		})
 		.fail(function(data) {
 			alert( "error" );

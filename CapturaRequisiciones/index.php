@@ -80,6 +80,10 @@
                 <div>
                     <button class="form__submit" type="button" id="procesar" onclick="agregaProducto()">Procesar</button>
                 </div>
+                <div id="muestra_mensaje">
+
+                </div>
+                <br>
                 <div id="resultadoPDF">
 
                 </div>

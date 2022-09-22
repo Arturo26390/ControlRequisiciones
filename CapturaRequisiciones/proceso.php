@@ -181,6 +181,9 @@ if($opcion == 5){
 	
 	
 	$mail->MsgHTML($texto);
+   $file = "../Requisiciones-PDF/".$clave_requisicion.".pdf";
+   $mail->AddAttachment($file);
+
 	$mail->AddAddress("mnavarrete@cae3076.com");
 
 	$exito = $mail->Send();
@@ -196,6 +199,8 @@ if($opcion == 5){
 		$exito = $mail->Send();
 		$intentos=$intentos+1;	
 	}
+
+   echo "Correo Enviado";
 }
 
 ?>
