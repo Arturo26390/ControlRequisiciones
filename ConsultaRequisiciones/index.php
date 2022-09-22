@@ -65,6 +65,8 @@
                         <th class="tabla-mes__head">PDF</th>
                         <th class="tabla-mes__head">Fecha Captura</th>
                         <th class="tabla-mes__head">Usuario Captura</th>
+                        <th class="tabla-mes__head">Fecha Aprobada</th>
+                        <th class="tabla-mes__head">Fecha Completa</th>
                         <th class="tabla-mes__head">Fecha Cierre</th>
                         <th class="tabla-mes__head">Usuario Cierre</th>
                         <th class="tabla-mes__head">Patente</th>
@@ -73,7 +75,7 @@
                     </tr>
                     <?php
                     include("class.pagina.php");
-                    $sql = "SELECT CLAVE_REQUISICION,FECHA_CAPTURA,USUARIO_CAPTURA,FECHA_CIERRE,USUARIO_CIERRE,PATENTE,PRIORIDAD,DEPARTAMENTO FROM CREQ_REQUISICIONES_GENERAL";
+                    $sql = "SELECT CLAVE_REQUISICION,FECHA_CAPTURA,USUARIO_CAPTURA,FECHA_CIERRE,USUARIO_CIERRE,PATENTE,PRIORIDAD,DEPARTAMENTO,FECHA_APROBADA,FECHA_COMPLETA FROM CREQ_REQUISICIONES_GENERAL";
                     $PAGINADOR=new PAGINADOR($sql,$con);
                     
                     $sql=$PAGINADOR->sql;
@@ -106,12 +108,24 @@
                          }else{
                             $fecha_cierre = $row[3];
                          }
+                         if($row[8] == '0000-00-00 00:00:00'){
+                            $fecha_aprobada = "";
+                         }else{
+                            $fecha_aprobada = $row[8];
+                         }
+                         if($row[9] == '0000-00-00 00:00:00'){
+                            $fecha_completa = "";
+                         }else{
+                            $fecha_completa = $row[9];
+                         }
                     ?>
                     <tr>
                         <td class="tabla-mes"><a href="seguimiento.php?requisicion=<?php echo $row[0];?>" target="_blank"><?php echo $row[0]?></a></td>
                         <td class="tabla-mes"><a href="../Requisiciones-PDF/<?php echo $row[0]; ?>.pdf" target="_blank"><img src="pdf.png" width="20px" alt=""></a></td>
                         <td class="tabla-mes"><?php echo $row[1]?></td>
                         <td class="tabla-mes"><?php echo $nombre_usuario?></td>
+                        <td class="tabla-mes"><?php echo $fecha_aprobada?></td>
+                        <td class="tabla-mes"><?php echo $fecha_completa?></td>
                         <td class="tabla-mes"><?php echo $fecha_cierre; ?></td>
                         <td class="tabla-mes"><?php echo $nombre_usuario2?></td>
                         <td class="tabla-mes"><?php echo $row[5]?></td>
