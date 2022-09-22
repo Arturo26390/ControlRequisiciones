@@ -167,7 +167,7 @@ if($opcion == 5){
 	$mail->Port = 465;
 	$mail->SMTPSecure = 'ssl';
 	$mail->Username   = 'sistemas.puebla@cae3076.com';
-	$mail->Password   = "Bcqae610!";
+	$mail->Password   = "";
 	/*-------------------------------------------------------------------------------------------------------------------------------*/
 	//====== DE QUIEN ES ========
 	$mail->From       = "sistemas.puebla@cae3076.com";
