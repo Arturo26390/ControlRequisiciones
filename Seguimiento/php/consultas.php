@@ -141,8 +141,8 @@ if($opcion == 2){
                     <th class="table-mes oculto" id="columna_extra1_<?php echo $var1?>"><input type="text" value="<?php echo $cantidad_faltante?>" class="form__text-validador" style="width: 200px;" disabled></th>
                     <th class="table-mes oculto" id="columna_extra2_<?php echo $var1?>">
                     <div>
-                            <input type="text" placeholder="Ingrese información" class="form__text-validador" style="width: 200px;" id="cantidad_entregada_<?php echo $var1?>" onchange="modifica_cantidad('<?php echo $var1?>','<?php echo $cantidad_faltante?>','<?php echo $clave_producto?>','<?php echo $clave_requisicion_2?>')">
-                        </div>
+                        <input type="text" placeholder="Ingrese información" class="form__text-validador" style="width: 200px;" id="cantidad_entregada_<?php echo $var1?>" onchange="modifica_cantidad('<?php echo $var1?>','<?php echo $cantidad_faltante?>','<?php echo $clave_producto?>','<?php echo $clave_requisicion_2?>')">
+                    </div>
                     </th>
                 </tr>
             <?php 

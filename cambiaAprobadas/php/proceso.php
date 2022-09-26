@@ -12,9 +12,19 @@ if($opcion == 1){
 
     $select = $_POST['select'];
     $clave_requisicion = $_POST['clave_requisicion'];
-
+    $estatus = 'APROBADA';
+    
     if($select == 'SI'){
-        $estatus = 'APROBADA';
+
+        $update = "UPDATE CREQ_REQUISICIONES_GENERAL SET ESTATUS = '".$estatus."', FECHA_APROBADA = '".$fecha ." ".$hora."' WHERE CLAVE_REQUISICION = '".$clave_requisicion."'";
+        $ejecuta_update = mysqli_query($con, $update);
+
+        if($ejecuta_update){
+            echo "Correcto!";
+        }else{
+            echo "Error: Intente de nuevo";
+        }
+        
         ///////////////////////////////////////////////// ENVIO DE CORREO A COMPRAS ////////////////////////////////////////////////////////////////
 
          /// CREACION DEL CORREO
@@ -60,15 +70,6 @@ if($opcion == 1){
         }
     }else{
         $estatus = 'ENVIADA';
-    }  
-
-    $update = "UPDATE CREQ_REQUISICIONES_GENERAL SET ESTATUS = '".$estatus."' WHERE CLAVE_REQUISICION = '".$clave_requisicion."'";
-    $ejecuta_update = mysqli_query($con, $update);
-
-    if($ejecuta_update){
-        echo "Correcto!";
-    }else{
-        echo "Error: Intente de nuevo";
-    }
+    }   
 }
 ?>

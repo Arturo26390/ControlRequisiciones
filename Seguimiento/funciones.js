@@ -65,28 +65,32 @@ function checks_respuestas(respuesta){
 function modifica_cantidad(indice,cantidad_producto,clave_producto,clave_requisicion){
 	var cantidad_entregada = $("#cantidad_entregada_"+indice).val();
 	//alert("Se resta "+cantidad_entregada+" a "+cantidad_producto+" del producto "+clave_producto+" de la requisicion "+clave_requisicion);
-	$.ajax(
-	{
-		url : 'php/proceso.php',
-		type: "POST",
-		data : {
-				opcion : 1,
-				requisicion : clave_requisicion,
-				producto : clave_producto,
-				cantidad_producto : cantidad_producto,
-				cantidad_entregada : cantidad_entregada
-			}
-	})
-		.done(function(data) {
-			//$("#resultado").html(data);
-			console.log(data);
+	if(cantidad_entregada > cantidad_producto){
+		alert("La cantidad entregada no puede ser mayor a la esperada");
+	}else{
+		$.ajax(
+		{
+			url : 'php/proceso.php',
+			type: "POST",
+			data : {
+					opcion : 1,
+					requisicion : clave_requisicion,
+					producto : clave_producto,
+					cantidad_producto : cantidad_producto,
+					cantidad_entregada : cantidad_entregada
+				}
 		})
-		.fail(function(data) {
-			alert( "error" );
-		})
-		.always(function(data) {
-			
-		});
+			.done(function(data) {
+				//$("#resultado").html(data);
+				console.log(data);
+			})
+			.fail(function(data) {
+				alert( "error" );
+			})
+			.always(function(data) {
+				
+			});
+	}	
 }
 
 function carga(){
