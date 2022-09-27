@@ -41,7 +41,7 @@
 
 .body-bg {
     background-color: #f4faf6;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     /* Fondo Enero */
     /* background-image: radial-gradient(#BF2642 0.5px, transparent 0.5px), radial-gradient(#BF2642 0.5px, #e5e5f7 0.5px);
     background-size: 20px 20px;
@@ -57,7 +57,7 @@
 
 .body-bg--text{
     background-color: #f4faf6;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     /* Fondo Enero */
     /* background-image: radial-gradient(#BF2642 0.5px, transparent 0.5px), radial-gradient(#BF2642 0.5px, #e5e5f7 0.5px);
     background-size: 20px 20px;
@@ -1517,5 +1517,167 @@
     align-items: center;
     margin-left: 25px;
 }
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background: #11101d;
+    /* background: var(--Enero-color_bg); */
+}
+.sidebar .logo-details{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.sidebar .logo-details i{
+    font-size: 30px;
+    color: #fff;
+    /* background: red; */
+    height: 50px;
+    min-width: 58px;
+    text-align: center;
+    line-height: 50px;
+}
+.sidebar .logo-details .logo__name{
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+}
+.sidebar .nav-links{
+    /* background: red; */
+    height: 100%;
+    padding-top: 30px;
+    overflow-y: auto;
+}
+.sidebar .nav-links::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .nav-links li{
+    position: relative;
+    list-style: none;
+    transition: all 0.4s ease;
+}
+.sidebar .nav-links li:hover{
+    background: #1d1b31;
+}
+.sidebar .nav-links li .icon__link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sidebar .nav-links li a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    
+}
+.sidebar .nav-links li a .link__name{
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+.sidebar .nav-links li i{
+    font-size: 18px;
+    color: #fff;
+    /* background: red; */
+    height: 50px;
+    min-width: 58px;
+    text-align: center;
+    line-height: 50px;
+    transition: all 0.3s ease;
+}
+.sidebar .nav-links li.showMenu i.arrow{
+    transform: rotate(-180deg);
+}
+.sidebar .nav-links li .sub-menu a{
+    color: #FFF;
+    font-size: 14px;
+    padding: 5px 0;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: all 0.5s ease;
+}
+.sidebar .nav-links li .sub-menu a:hover{
+    opacity: 1;
+}
+.sidebar .nav-links li .sub-menu{
+    padding: 6px 6px 14px 60px;
+    margin-top: -10px;
+    background: #1d1b31;
+    display: none;
+}
+.sidebar .nav-links li.showMenu .sub-menu{
+    display: block;
+}
+.sidebar.close .nav-links li .sub-menu{
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    margin-top: 0;
+    padding: 10px 20px;
+    border-radius: 0 6px 6px 0;
+    transition: all 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar.close .nav-links li:hover .sub-menu{
+    top: 0;
+    opacity: 1;
+    pointer-events: all;
+}
+.sidebar .nav-links li .sub-menu .link__name{
+    display: none;
+}
+.sidebar.close .nav-links li .sub-menu .link__name{
+    font-size: 16px;
+    opacity: 1;
+    display: block;
+}
+.sidebar .nav-links li .sub-menu.blank{
+    opacity: 1;
+    pointer-events: auto;
+    padding: 3px 20px 6px 16px;
+    display: none;
+}
+.sidebar .nav-links li:hover .sub-menu.blank{
+    top: 50%;
+    transform: translateY(-50%);
+}
+.home-section{
+    position: relative;
+    /* background: rebeccapurple; */
+    background-color: #f4faf6;
+    background-image: radial-gradient(#BF2642 0.5px, #f4faf6 0.5px);
+    min-height: 100vh;
+    height: 100%;
+    left: 260px;
+    width: calc(100% - 260px);
+    transition: all 0.5s ease;
 
+}
+.sidebar.close ~ .home-section{
+    left: 58px;
+    width: calc(100% - 58px);
 
+}
+.home-section .home-content{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    /* margin: 0 15px; */
+}
+.home-section .home-content i{
+    margin: 0 8px;
+}
+.home-section .home-content i,
+.home-section .home-content .home-section__text{
+    color: #000;
+    font-size: 35px;
+}
+.home-section .home-content .home-section__text{
+    font-size: 20px;
+    font-weight: 500;
+}
