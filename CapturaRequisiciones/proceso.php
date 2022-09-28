@@ -186,19 +186,23 @@ if($opcion == 5){
 
 	$mail->AddAddress("mnavarrete@cae3076.com");
 
-	$exito = $mail->Send();
+	//$exito = $mail->Send();
+
+
 	/*-------------------------------------------------------------------------------------------------------------------------------*/
 	//Si el mensaje no ha podido ser enviado se realizaran 4 intentos mas como mucho 
 	//para intentar enviar el mensaje, cada intento se hara 5 segundos despues 
 	//del anterior, para ello se usa la funcion sleep
 	/*-------------------------------------------------------------------------------------------------------------------------------*/	
+
+
 	$intentos=1; 
-	while ((!$exito) && ($intentos < 5)) {
+	/*while ((!$exito) && ($intentos < 5)) {
 	sleep(2);
 		//echo $mail->ErrorInfo;
 		$exito = $mail->Send();
 		$intentos=$intentos+1;	
-	}
+	}*/
 
    echo "Correo Enviado";
 }
