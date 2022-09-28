@@ -1,4 +1,9 @@
 <?php
+
+if(!isset($_SESSION)){
+    session_start(); 
+}
+
 define("DB_SERVER", "192.168.74.117");
 define("DB_USER", "superuser");
 define("DB_PASS", "E079D388");

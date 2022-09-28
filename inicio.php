@@ -15,6 +15,8 @@
 <body class="body-bg">
     <?php
         include("Includes/php/menu.php");
+        session_start(); 
+        $usuario=$_SESSION['usuario'];
     ?>
     <section class="home-section">
         <div class="home-content">
@@ -32,3 +34,4 @@
 </body>
 <script src="asset/js/sidebar.js"></script>
 </html>
+
