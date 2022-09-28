@@ -15,43 +15,12 @@
     <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="funciones.js"></script>
-    <?php
-    include("../Includes/connection.php");
-    ?>
     <title>Plantilla</title>
 </head>
 <body class="body-bg">
-    <div class="sidebar">
-        <div class="logo-details">
-            <i class='bx bx-grid-alt'></i>
-            <span class="logo__name">Captura Requisicion</span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="../CapturaRequisiciones/index.php">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="link__name">Captura Requisicion</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-collection'></i>
-                    <span class="link__name">Consulta Requisiciones</span>
-                </a>
-            </li>
-            <li>
-                <a href="../CambiaAprobadas/index.php">
-                    <i class='bx bx-scatter-chart'></i>
-                    <span class="link__name">Cambia Aprobadas</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxl-netlify'></i>
-                    <span class="link__name">Seguimiento</span>
-                </a>
-            </li>
-        </ul>
+    <?php
+        include("../Includes/php/menu.php");
+    ?>
     </div>
     <section class="home-section">
         <div class="home-content">
@@ -127,11 +96,10 @@
                     </div>
                 </div>
             </form>
-            
-
             <div class="border"></div>
             <footer class="footer"></footer>
         </div>
     </section>
 </body>
+<script src="../asset/js/sidebar.js"></script>
 </html>
