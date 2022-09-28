@@ -103,6 +103,7 @@ if($opcion == 2){
                 $nombre_producto =  $fila_producto['NOMBRE'];
                 ?>
                 <tr>
+                    <input type="hidden" id="th_producto_<?php echo $var1;?>" value="<?php echo $nombre_producto; ?>">
                     <th class="tabla-mes"><?php echo $nombre_producto; ?></th> 
                     <th class="tabla-mes"><?php echo $cantidad_producto; ?></th>
                     <th class="tabla-mes"><?php echo $observaciones; ?></th>
@@ -152,7 +153,7 @@ if($opcion == 2){
         </table>
         <br><br>
         <div>
-            <button class="form__submit" type="button" id="procesar" onclick="carga()">Procesar</button>
+            <button class="form__submit" type="button" id="procesar" onclick="carga('<?php echo $clave_requisicion_2?>','<?php echo $var1?>')">Procesar</button>
         </div>
         <br>
         <div class="contenedor-descarga"  id="cargando">

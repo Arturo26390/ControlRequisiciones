@@ -1,3 +1,21 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <!-- <link rel="shortcut icon" href="../constantes/asset/imgs/favicon.png" type="image/png" />
+	<link rel="stylesheet" href="../constantes/asset/css/style.css"> -->
+    <link rel="shortcut icon" href="../../asset/imgs/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../../asset/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="funciones.js"></script>
+    <title>Seguimiento</title>
+</head>
 <?php
 include("../../Includes/connection.php");
 require("../../Includes/php/PHPMailer_5.2.4/class.phpmailer.php");
@@ -38,8 +56,19 @@ if($opcion == 1){
         $update_general = "UPDATE CREQ_REQUISICIONES_GENERAL SET FECHA_COMPLETA = '".$fecha." ".$hora."', USUARIO_CIERRE = '".$usuario."' WHERE CLAVE_REQUISICION = '".$requisicion."'";
         $ejecuta_update_general = mysqli_query($con, $update_general);
     }
+}
+
+if($opcion == 2){
+    
+    $requisicion = $_POST['requisicion'];
+    $productos = explode("|",trim($_POST['vec_productos'],"|"));
+    $cantidades =  explode("|",trim($_POST['vec_cantidad'],"|"));
+
+    echo $requisicion;
+
     /////////////////////////////////////// ENVIO DE CORREO A IDT ENTREGA DE PRODUCTOS //////////////////////////////////////////////////////////////////////////
 
+    
     /// CREACION DEL CORREO
     /*-------------------------------------------------------------------------------------------------------------------------------*/
     $mail = new PHPMailer();
@@ -62,11 +91,20 @@ if($opcion == 1){
                         Se ha recibido material de la requisicion: ".$requisicion."<br><br>";
 
     $texto .= "Se ha recibido en el area de compras lo siguiente:
-    <br><br>
-    Producto: <strong>".$nombre_producto."</strong><br>
-    Cantidad: <strong>".$cantidad_entregada."</strong><br><br>
-    Favor de pasar a recoger!
-    ";                    
+    <br><br><br>
+    <table class='tabla-mes'>
+    <tr>
+        <th class='tabla-mes__head'>PRODUCTO</th>
+        <th class='tabla-mes__head'>CANTIDAD</th>
+    </tr>";
+    for($ix = 0; $ix <count($productos); $ix++){
+        $texto .= "<tr>
+                        <th>".$productos[$ix]."</th>
+                        <th>".$cantidades[$ix]."</th>
+                   </tr>";
+    }
+    $texto .= "</table><br><br><br>";
+    $texto .= "Favor de pasar a recoger!";                   
     
     
     $mail->MsgHTML($texto);
@@ -89,11 +127,6 @@ if($opcion == 1){
         $intentos=$intentos+1;	
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-
-if($opcion == 2){
-    
 }
 
 ?>

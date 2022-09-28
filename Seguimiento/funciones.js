@@ -93,13 +93,28 @@ function modifica_cantidad(indice,cantidad_producto,clave_producto,clave_requisi
 	}	
 }
 
-function carga(){
+function carga(clave_requisicion,indice){
+
+	var productos = '';
+	var cantidad = '';
+
+	for(var i=1; i<=indice; i++){
+		var cantidad_entregada = $("#cantidad_entregada_"+i).val();
+		if(cantidad_entregada > 0){
+			productos =  productos+ $("#th_producto_"+i).val()+"|";
+			cantidad = cantidad + cantidad_entregada+"|";
+		}
+	}
+
 	$.ajax(
 	{
 		url : 'php/proceso.php',
 		type: "POST",
 		data : {
-				opcion : 2
+				opcion : 2,
+				requisicion : clave_requisicion,
+				vec_productos : productos,
+				vec_cantidad : cantidad
 			}
 	})
 		.done(function(data) {
