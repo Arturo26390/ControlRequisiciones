@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+$servidor_dominio=$_SERVER['HTTP_HOST'];
 $consulta_menu = "SELECT * FROM CREQ_MENU";
 $ejecuta_consulta_menu = mysqli_query($con, $consulta_menu);
 ?>
@@ -18,7 +19,7 @@ $ejecuta_consulta_menu = mysqli_query($con, $consulta_menu);
 
         ?>
         <li>
-            <a href="<?php echo $ubicacion; ?>">
+            <a href="<?php echo "http://".$servidor_dominio."/".$ubicacion; ?>">
                 <i class='<?php echo $logo; ?>'></i>
                 <span class="link__name"><?php echo $nombre; ?></span>
             </a>

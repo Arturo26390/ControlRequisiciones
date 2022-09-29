@@ -42,7 +42,7 @@
                         </div>
                         <div class="contenedor-checkbox">
                             <input type="checkbox" class="form-checkbox" name="" id="check_modificaciones" onClick="Muestra2()">
-                            <span>Modificacions</span>
+                            <span>Modificaciones</span>
                         </div>
                         <div class="contenedor-checkbox">
                             <input type="checkbox" class="form-checkbox" name="" id="check_bajas" onClick="Muestra3()">

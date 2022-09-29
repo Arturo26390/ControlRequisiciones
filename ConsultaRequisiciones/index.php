@@ -89,13 +89,13 @@
                         while($row=mysqli_fetch_array($res))
                         {
 
-                            $consulta_usuarios = "SELECT * FROM CREQ_USUARIOS WHERE CLAVE = '".$row[2]."'";
+                            $consulta_usuarios = "SELECT * FROM CREQ_USUARIOS WHERE USERNAME = '".$row[2]."'";
                             $ejecuta_consulta_usuarios =  mysqli_query($con, $consulta_usuarios);
                             $fila_usuarios = mysqli_fetch_array($ejecuta_consulta_usuarios);
                             $nombre_usuario = $fila_usuarios["NOMBRE"];
 
                             if($row[4] != ''){
-                                $consulta_usuarios2 = "SELECT * FROM CREQ_USUARIOS WHERE CLAVE = '".$row[4]."'";
+                                $consulta_usuarios2 = "SELECT * FROM CREQ_USUARIOS WHERE USERNAME = '".$row[4]."'";
                                 $ejecuta_consulta_usuarios2 =  mysqli_query($con, $consulta_usuarios2);
                                 $fila_usuarios2 = mysqli_fetch_array($ejecuta_consulta_usuarios2);
                                 $nombre_usuario2 = $fila_usuarios2["NOMBRE"];
